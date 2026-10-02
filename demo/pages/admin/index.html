@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="KMS AMIS valdymo pulto KPI, duomenų srautų ir laukiančių veiksmų apžvalga.">
+  <title>Peržiūros skydas · KMS AMIS</title>
+  <link rel="stylesheet" href="../../css/theme.css">
+  <link rel="stylesheet" href="../../css/sections.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar" id="admin-sidebar"></aside>
+    <div class="admin-workspace">
+      <header class="admin-topbar" id="admin-topbar"></header>
+      <main class="admin-main" id="admin-main">
+        <section class="admin-page-hero"><div><p class="section-kicker">3 etapas · operacijų centras</p><h1>Peržiūros skydas</h1><p class="lede">Gyvai matykite duomenų priėmimą, stotelių būsenas, spragas ir veiksmus, kurių šiandien reikia operatoriui.</p></div><aside class="admin-page-hero-aside"><strong>Simuliuojamas priėmimas</strong><p>Kas maždaug 4 sekundes sugeneruojamas naujas deterministinis perdavimo įvykis.</p></aside></section>
+        <div class="admin-stack">
+          <section class="admin-kpi-grid" aria-label="Pagrindiniai rodikliai">
+            <article class="stat-card stat-card--accent"><span class="stat-label">Šiandien priimta įrašų</span><strong class="stat-value" id="kpi-ingested">–</strong><span class="stat-note">pagal priėmimo žurnalą</span></article>
+            <article class="stat-card"><span class="stat-label">NEVALIDUS eilėje</span><strong class="stat-value" id="kpi-invalid">–</strong><span class="stat-note">laukiama patvirtinimo</span></article>
+            <article class="stat-card"><span class="stat-label">Atviros spragos</span><strong class="stat-value" id="kpi-gaps">1</strong><span class="stat-note">KA-07 · Melnragė</span></article>
+            <article class="stat-card"><span class="stat-label">Aktyvūs prenumeratoriai</span><strong class="stat-value" id="kpi-subscribers">–</strong><span class="stat-note">patvirtinti BDSR įrašai</span></article>
+          </section>
+          <section class="surface surface-pad"><div class="admin-section-title"><div><span class="eyebrow">Srautas · paskutiniai įvykiai</span><h2>Gyvas priėmimo srautas</h2><p>Įvykis apima šaltinį, parametrą, įrašų skaičių, protokolą ir priėmimo būseną.</p></div><span class="admin-live-dot">Simuliacija veikia</span></div><div class="data-table-wrap admin-table"><table class="data-table"><thead><tr><th>Laikas</th><th>Šaltinis</th><th>Parametras</th><th>Įrašai</th><th>Protokolas</th><th>Būsena</th></tr></thead><tbody id="feed-table"></tbody></table></div><p class="fine-print" id="feed-status" role="status"></p></section>
+          <div class="admin-grid-2">
+            <section class="surface surface-pad"><div class="admin-section-title"><div><span class="eyebrow">15 šaltinių</span><h2>Stotelių ir įrenginių būklė</h2><p>KA-07 pažymėta pagal istorinio tarpo įvykį.</p></div></div><div class="data-table-wrap admin-table admin-table--compact"><table class="data-table"><thead><tr><th>Šaltinis</th><th>Tipas</th><th>Paskutinis ryšys</th><th>Būsena</th></tr></thead><tbody id="health-table"></tbody></table></div></section>
+            <section class="surface surface-pad"><div class="admin-section-title"><div><span class="eyebrow">Veiksmų pėdsakas</span><h2>Naujausi auditai</h2><p>Administratoriaus ir specialisto veiksmai iš bendro žurnalo.</p></div><a class="button button--secondary button--small" href="auditas.html">Atverti visą žurnalą</a></div><div class="data-table-wrap admin-table admin-table--compact"><table class="data-table"><thead><tr><th>Laikas</th><th>Vaidmuo</th><th>Veiksmas</th><th>Rezultatas</th></tr></thead><tbody id="audit-preview"></tbody></table></div></section>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script type="module" src="../../js/pages/admin/index.js"></script>
+</body>
+</html>

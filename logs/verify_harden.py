@@ -1,0 +1,136 @@
+import io, sys
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+from playwright.sync_api import sync_playwright
+
+BASE = "http://localhost:8000"
+
+def log(m): print(m)
+
+with sync_playwright() as pw:
+    browser = pw.chromium.launch()
+    ctx = browser.new_context(viewport={"width": 1440, "height": 900})
+    page = ctx.new_page()
+    errors = []
+    page.on("console", lambda m: errors.append("%s console-%s: %s" % (page.url.split("/")[-1], m.type, m.text)) if m.type == "error" else None)
+    page.on("pageerror", lambda e: errors.append("%s pageerror: %s" % (page.url.split("/")[-1], e)))
+
+    # 1. Home footer link
+    page.goto(BASE + "/index.html")
+    href = page.eval_on_selector("nav.footer-links a:first-child", "a => a.getAttribute('href')")
+    log("footer link href: " + href)
+    page.click("nav.footer-links a:first-child")
+    page.wait_for_load_state()
+    log("footer link lands on: %s  (h1: %s)" % (page.url, page.locator("h1").first.text_content()))
+
+    # 2. oro.html tabs
+    page.goto(BASE + "/pages/oro.html")
+    page.wait_for_selector("main")
+    log("oro tabs count: %d" % page.locator("[data-analysis-tab]").count())
+    t1 = page.locator("#tab-automatic-air"); t2 = page.locator("#tab-laboratory-air")
+    log("tab1 aria-controls=%s selected=%s tabindex=%s" % (t1.get_attribute("aria-controls"), t1.get_attribute("aria-selected"), t1.get_attribute("tabindex")))
+    log("tab2 aria-controls=%s selected=%s tabindex=%s" % (t2.get_attribute("aria-controls"), t2.get_attribute("aria-selected"), t2.get_attribute("tabindex")))
+    p1 = page.locator("#panel-automatic-air"); p2 = page.locator("#panel-laboratory-air")
+    log("panel1 role=%s labelledby=%s tabindex=%s hidden=%s" % (p1.get_attribute("role"), p1.get_attribute("aria-labelledby"), p1.get_attribute("tabindex"), p1.is_hidden()))
+    log("panel2 role=%s labelledby=%s tabindex=%s hidden=%s" % (p2.get_attribute("role"), p2.get_attribute("aria-labelledby"), p2.get_attribute("tabindex"), p2.is_hidden()))
+    t2.click()
+    page.wait_for_timeout(300)
+    log("after click tab2: p1 hidden=%s p2 hidden=%s tab1 tabindex=%s tab2 tabindex=%s" % (p1.is_hidden(), p2.is_hidden(), t1.get_attribute("tabindex"), t2.get_attribute("tabindex")))
+    t2.focus(); page.keyboard.press("ArrowLeft")
+    page.wait_for_timeout(200)
+    log("ArrowLeft focus: %s, tab1 selected=%s, p1 hidden=%s" % (page.evaluate("document.activeElement.id"), t1.get_attribute("aria-selected"), p1.is_hidden()))
+    page.keyboard.press("End"); page.wait_for_timeout(100)
+    log("End focus: %s" % page.evaluate("document.activeElement.id"))
+    log("oro status chips role=status count: %d" % page.locator(".status-chip[role=status]").count())
+
+    # 3. gyvoji_gamta wildlife tabs
+    page.goto(BASE + "/pages/gyvoji_gamta.html")
+    page.wait_for_selector("#wildlife-tabs button")
+    page.wait_for_timeout(500)
+    wt = page.locator("#wildlife-tabs button")
+    log("wildlife tabs: %d, first selected=%s, tabindex=%s" % (wt.count(), wt.nth(0).get_attribute("aria-selected"), wt.nth(0).get_attribute("tabindex")))
+    panel = page.locator("#wildlife-panel")
+    log("wildlife panel role=%s labelledby=%s tabindex=%s" % (panel.get_attribute("role"), panel.get_attribute("aria-labelledby"), panel.get_attribute("tabindex")))
+    wt.nth(3).click()
+    page.wait_for_timeout(300)
+    log("after click 4th tab: title=%r, panel labelledby=%s, chip=%r" % (page.locator("#wildlife-active-title").text_content(), panel.get_attribute("aria-labelledby"), page.locator("#wildlife-status").text_content()))
+    wt.nth(0).focus(); page.keyboard.press("ArrowRight")
+    page.wait_for_timeout(100)
+    log("ArrowRight focus: %s, selected count=%d" % (page.evaluate("document.activeElement.id"), page.locator("#wildlife-tabs button[aria-selected=true]").count()))
+
+    # 4. subscription wizard focus
+    page.goto(BASE + "/pages/prenumerata.html")
+    page.wait_for_selector("#to-confirm")
+    page.check("[data-check-group='districts'] >> nth=0")
+    page.click("#to-confirm")
+    page.wait_for_timeout(300)
+    panel_el = page.evaluate("document.activeElement.getAttribute('data-wizard-panel') || document.activeElement.tagName")
+    log("confirm step focused: %s, confirm panel visible = %s" % (panel_el, page.locator('[data-wizard-panel=confirm]').is_visible()))
+    page.click("#back-to-selection")
+    page.wait_for_timeout(300)
+    log("back to selection focused: %s / %s" % (page.evaluate("document.activeElement.tagName"), page.evaluate("document.activeElement.dataset.wizardPanel")))
+
+    # 5. login flow
+    page.goto(BASE + "/pages/admin/login.html")
+    page.wait_for_selector("#credentials-form")
+    page.fill("#login-username", "admin")
+    page.fill("#login-password", "wrongpass")
+    page.click("#credentials-form button[type=submit]")
+    page.wait_for_timeout(200)
+    msg = page.locator("#credentials-message")
+    log("login error: role=%r text=%r visible=%s" % (msg.get_attribute("role"), msg.text_content(), msg.is_visible()))
+    page.fill("#login-username", "admin")
+    page.fill("#login-password", "Klaipeda#2026-10")
+    page.click("#credentials-form button[type=submit]")
+    page.wait_for_timeout(400)
+    log("password stage focus: %s, new-password visible=%s" % (page.evaluate("document.activeElement.id"), page.locator("#new-password").is_visible()))
+    page.fill("#new-password", "Klaipeda#2026-10")
+    page.fill("#new-password-repeat", "Klaipeda#2026-10")
+    page.click("#password-form button[type=submit]")
+    page.wait_for_timeout(400)
+    code = page.locator("#totp-code").text_content()
+    log("password stage focus: %s, new-password visible=%s, totp code=%s" % (page.evaluate("document.activeElement.id"), page.locator("#new-password").is_visible(), code))
+    page.fill("#totp-input", code)
+    page.click("#totp-form button[type=submit]")
+    page.wait_for_load_state()
+    log("after TOTP lands on: %s" % page.url)
+    page.set_viewport_size({"width": 1440, "height": 900})
+
+    # 6. admin dashboard: subscribers KPI + feed-status
+    page.wait_for_selector("#feed-table tr")
+    page.wait_for_timeout(500)
+    log("KPI subscribers: %s" % page.locator("#kpi-subscribers").text_content())
+    log("feed-status role: %s text: %r" % (page.evaluate("document.getElementById('feed-status').getAttribute('role')"), page.locator("#feed-status").text_content()))
+    page.wait_for_timeout(13000)
+    log("feed-status after ~13s: %r" % page.locator("#feed-status").text_content())
+
+    # 7. admin prenumeratos chips
+    page.goto(BASE + "/pages/admin/prenumeratos.html")
+    page.wait_for_selector("#subscriber-table tr")
+    page.wait_for_timeout(300)
+    chips = page.eval_on_selector_all("#subscriber-table .admin-chip", "els => els.map(e => e.textContent)")
+    log("prenumeratos chips: %s" % chips)
+
+    # 8. generated control labels
+    page.goto(BASE + "/pages/admin/pranesimai.html")
+    page.wait_for_timeout(300)
+    unnamed = page.evaluate("[...document.querySelectorAll('#gap-rules-table select, #gap-rules-table input[type=checkbox], #notification-modes select')].filter(el => !el.getAttribute('aria-label')).length")
+    log("pranesimai unnamed generated controls: %d" % unnamed)
+    page.goto(BASE + "/pages/admin/sla.html")
+    page.wait_for_selector("#sla-table select")
+    page.wait_for_timeout(300)
+    log("sla unnamed selects: %d" % page.evaluate("[...document.querySelectorAll('#sla-table select')].filter(el => !el.getAttribute('aria-label')).length"))
+    page.goto(BASE + "/pages/admin/nevalidus.html")
+    page.wait_for_timeout(500)
+    page.click("button[data-action=edit] >> nth=0")
+    page.wait_for_timeout(200)
+    inp = page.locator("[data-edit-value]")
+    log("nevalidus edit input aria-label: %r" % inp.first.get_attribute("aria-label"))
+    inp.first.fill("10")
+    page.click("button[data-action=approve-edit] >> nth=0")
+    page.wait_for_timeout(300)
+    log("nevalidus approve flow done")
+
+    log("TOTAL console/page errors: %d" % len(errors))
+    for e in errors[:15]: log("  " + e)
+
+    browser.close()

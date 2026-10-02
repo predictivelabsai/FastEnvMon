@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="KMS AMIS interaktyvus Klaipėdos aplinkos monitoringo žemėlapis.">
+  <link rel="icon" href="data:,">
+  <title>Interaktyvus žemėlapis | KMS AMIS</title>
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <a class="skip-link" href="#zemelapis">Pereiti prie žemėlapio</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand-lockup" href="../index.html" aria-label="KMS AMIS pagrindinis puslapis">
+        <span class="brand-mark" aria-hidden="true">KMS</span>
+        <span><strong>Klaipėdos miesto savivaldybės aplinkos monitoringo informacinė sistema</strong><small>KMS AMIS · interaktyvus žemėlapis</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Pagrindinis meniu"><ul><li><details><summary>KMS AMIS<span class="chevron" aria-hidden="true"></span></summary><ul><li><a href="bendra-info.html">Bendra informacija</a></li><li><a href="vadovas.html">Naudotojo vadovas</a></li></ul></details></li><li><details><summary>Monitoringas<span class="chevron" aria-hidden="true"></span></summary><ul><li class="nav-panel-heading">Klaipėdos miesto savivaldybės aplinkos monitoringas</li><li class="nav-group-label">Aplinkos oro monitoringas</li><li><a href="oro.html">Automatinių stotelių duomenys</a></li><li><a href="truksmas.html">Aplinkos triukšmo monitoringas</a></li><li><a href="dirvezemis.html">Dirvožemio monitoringas</a></li><li><a href="vanduo.html">Paviršinio vandens monitoringas</a></li><li class="nav-group-label">Gyvosios gamtos monitoringas</li><li><a href="gyvoji_gamta.html">Gyvosios gamtos monitoringas</a></li><li><a href="zeldynai.html">Želdynų ir želdinių monitoringas</a></li></ul></details></li><li><a href="ataskaitos.html">Ataskaitos</a></li><li><a href="prenumerata.html">Prenumerata</a></li><li><a href="zemelapis.html" aria-current="page">Žemėlapis</a></li></ul></nav>
+    </div>
+    <div class="brand-stripe" aria-hidden="true"><span class="stripe-sea"></span><span class="stripe-shore"></span><span class="stripe-land"></span></div>
+  </header>
+
+  <main id="zemelapis" class="map-page-shell">
+    <div class="map-titlebar">
+      <div><p class="section-kicker">Duomenų vaizdavimas žemėlapyje</p><h1>Interaktyvus aplinkos žemėlapis</h1><p>Pasirinkite parametrą ir normos lygį. Spalva parodo paskutinio matavimo santykį su pasirinkta verte.</p></div>
+      <div class="map-actions"><a class="button button--secondary button--small" href="../index.html">← Pagrindinis puslapis</a><button class="button button--primary button--small" id="measure-toggle" type="button" aria-pressed="false">Matuoti atstumą</button><button class="button button--secondary button--small" id="measure-clear" type="button">Išvalyti matavimus</button></div>
+    </div>
+
+    <div class="map-layout">
+      <aside class="map-sidebar" aria-label="Žemėlapio filtrai ir legenda">
+        <div class="control-group"><label class="control-label" for="filter-section">Monitoringo dalis</label><select class="select-field" id="filter-section"></select></div>
+        <div class="control-group"><label class="control-label" for="filter-district">Mikrorajonas</label><select class="select-field" id="filter-district"><option value="all">Visi mikrorajonai</option></select></div>
+        <div class="control-group"><label class="control-label" for="filter-site">Monitoringo taškas</label><select class="select-field" id="filter-site"><option value="all">Visi taškai</option></select></div>
+        <div class="control-group"><label class="control-label" for="filter-parameter">Aplinkos kokybės parametras</label><select class="select-field" id="filter-parameter"></select></div>
+        <div class="control-group"><label class="control-label" for="norm-level">Taikoma norma</label><select class="select-field" id="norm-level"><option value="recommended">Rekomenduojama</option><option value="target">Siektina</option><option value="limit" selected>Ribinė</option></select><p class="control-help" id="norm-help">Spalvinis kodavimas taikomas pagal pasirinktą normos lygį.</p></div>
+
+        <div class="control-group"><span class="control-label">Sluoksniai</span><div class="layer-list" id="layer-toggles"><label><input type="checkbox" data-layer="districts" checked> Mikrorajonų ribos</label><label><input type="checkbox" data-layer="stations" checked> Savivaldybės stotelės</label><label><input type="checkbox" data-layer="iot" checked> Trečiųjų šalių IoT</label></div><p class="control-help">Papildomą sluoksnių valdymą rasite žemėlapio viršuje dešinėje.</p></div>
+        <div class="control-group legend"><span class="control-label">Spalvų legenda</span><div class="legend-row"><span class="legend-dot status-good"></span> Gera / iki 75 % normos</div><div class="legend-row"><span class="legend-dot status-fair"></span> Priimtina / iki normos</div><div class="legend-row"><span class="legend-dot status-moderate"></span> Vidutinė / iki 125 %</div><div class="legend-row"><span class="legend-dot status-poor"></span> Prasta / iki 175 %</div><div class="legend-row"><span class="legend-dot status-very-poor"></span> Labai prasta</div><div class="legend-row"><span class="legend-dot status-extremely-poor"></span> Ypač prasta</div><div class="legend-row"><span class="legend-dot status-no-data"></span> Nėra duomenų</div></div>
+        <ol class="measure-list" id="measure-list" aria-live="polite"></ol>
+      </aside>
+      <section class="map-canvas" aria-label="Klaipėdos monitoringo žemėlapis"><div id="map"></div><div class="map-status" id="map-status" role="status">Žemėlapis ruošiamas…</div></section>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="site-footer-inner"><div><strong>Klaipėdos miesto savivaldybė · KMS AMIS</strong><p>Demonstraciniai duomenys, normos ir mikrorajonų geometrija turi būti patvirtinti prieš diegimą.</p></div><nav class="footer-links" aria-label="Poraštės nuorodos"><a href="admin/index.html">Valdymo pultas (demonstracija)</a><a href="privatumo-politika.html">Privatumo politika</a><a href="slapuku-politika.html">Slapukų politika</a><a href="vadovas.html">Naudotojo vadovas</a><a href="zemelapis.html" aria-current="page">Žemėlapis</a></nav></div></footer>
+
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script type="module" src="../js/pages/map.js"></script>
+<script type="module" src="../js/main.js"></script></body>
+</html>
+

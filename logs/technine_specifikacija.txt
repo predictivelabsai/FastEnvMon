@@ -1,0 +1,692 @@
+ 
+1 
+ 
+KLAIPĖDOS MIESTO SAVIVALDYBĖS APLINKOS MONITORINGO INFORMACINĖS 
+SISTEMOS SUKŪRIMO, ĮDIEGIMO IR PALAIKYMO PASLAUGŲ 
+TECHNINĖ SPECIFIKACIJA 
+1. Pirkimo objektas ir tikslai: 
+1.1. Pirkimo objektas – Klaipėdos miesto savivaldybės aplinkos monitoringo informacinės 
+sistemos sukūrimo, įdiegimo ir palaikymo paslaugos (toliau – Paslaugos). 
+1.1.1. Paslaugų apimtis: 
+1.1.1.1. Klaipėdos miesto savivaldybės aplinkos monitoringo informacinės sistemos (toliau – 
+KMS AMIS) sukūrimas (architektūros projektavimas, programavimas, integravimas, testavimas) ir 
+įdiegimas Klaipėdos miesto savivaldybės administracijos (toliau – Perkančioji organizacija) 
+nurodytoje infrastruktūroje. 
+1.1.1.2. Perkančiosios organizacijos 2 (dviejų) paskirtų specialistų (toliau – Specialistai) 
+nuotolinis mokymas darbui su KMS AMIS. 
+1.1.1.3. KMS AMIS priežiūra ir veikimo palaikymas (toliau – Palaikymas) pagal paslaugų 
+sutartį. 
+1.1.1.4. Perkančiosios organizacijos turimų istorinių Klaipėdos miesto savivaldybės aplinkos 
+monitoringo duomenų perkėlimas į KMS AMIS. 
+1.2. Tikslai: 
+1.2.1. Sukurti modernią, funkcionalią ir saugią KMS AMIS, skirtą centralizuotam aplinkos 
+monitoringo ir susijusių meteorologinių duomenų surinkimui, ilgalaikiam saugojimui, išsamiai 
+duomenų analizei, interaktyviam geoerdviniam monitoringo rezultatų atvaizdavimui, visuomenės, 
+atsakingų institucijų ir verslo atstovų (toliau – Viešieji naudotojai) informavimui apie aplinkos būklės 
+kiekybinius ir kokybinius pokyčius bei nustatytų ribinių verčių viršijimus Klaipėdoje. 
+1.2.2. Užtikrinti sklandų KMS AMIS įdiegimą Perkančiosios organizacijos infrastruktūroje ir 
+visišką integraciją su išoriniais bei vidiniais duomenų šaltiniais, IoT (angl. Internet of Things ) 
+įrenginiais ir valstybinėmis platformomis. 
+1.2.3. Užtikrinti ilgalaikį KMS AMIS Palaikymą, operatyvų sistemos gedimų šalinimą, 
+saugumo spragų valdymą ir prevencinius atnaujinimus. 
+1.2.4. Perkelti Perkančiosios organizacijos turimus istorinius Klaipėdos miesto savivaldybės 
+aplinkos monitoringo duomenis į KMS AMIS. 
+2. Paslaugų bendrieji reikalavimai: 
+2.1. Tiekėjas, vykdydamas Paslaugas, privalo vadovautis: 
+2.1.1. Lietuvos Respublikos aplinkos monitoringo įstatymu. 
+2.1.2. Lietuvos Respublikos asmens duomenų teisinės apsaugos įstatymu. 
+2.1.3. Lietuvos Respublikos kibernetinio saugumo įstatymu. 
+2.1.4. Bendraisiais savivaldybių aplinkos monitoringo nuostatais, patvirtintais Lietuvos 
+Respublikos aplinkos ministro 2021 m. vasario 26 d. įsakymu Nr. D1-117. 
+2.1.5. Europos Parlamento ir Tarybos 2016 m. balandžio 27 d. reglamentu (ES) 2016/679 dėl 
+fizinių asmenų apsaugos tvarkant asmens duomenis ir dėl laisvo tokių duomenų judėjimo ir kuriuo 
+panaikinama Direktyva 95/46/EB (toliau – BDAR). 
+2.1.6. Kitais aktualiais teisės aktais ir dokumentais, reglamentuojančiais perkamas paslaugas. 
+2.2. Pasikeitus įstatymų, kitų teisės aktų ir dokumentų, reglamentuojančių perkamas 
+paslaugas, nuostatoms ir (ar) reikalavimams, Tiekėjas turi vykdyti Paslaugas pagal galiojančius teisės 
+aktus. 
+
+===PAGE BREAK===
+
+ 
+2 
+ 
+2.3. Jeigu Paslaugų vykdymui bus būtina tam tikra trečiųjų asmenų, įskaitant valstybės 
+institucijas, turima informacija, Tiekėjas privalo pats savo vardu ir lėšomis rūpintis šios informacijos 
+gavimu, o dėl objektyvių priežasčių nesant galimybės tai padaryti, nedelsiant informuoti apie tai 
+Perkančiąją organizaciją. 
+2.4. Tiekėjas turi apsirūpinti materialiniais ištekliais, reikalingais paslaugų sutartyje 
+numatytoms Paslaugoms suteikti. 
+3. Paslaugų specialieji reikalavimai: 
+3.1. Tiekėjas KMS AMIS kūrimo, testavimo ir diegimo eigą pristato Perkančiosios 
+organizacijos padaliniui – Miesto vystymo ir priežiūros departamento Aplinkos ir klimato kaitos 
+skyriui (toliau – Skyrius) reguliariai – nuotoliniu būdu ir žodžiu, bet ne rečiau kaip 1 (vieną) kartą 
+per mėnesį. 
+3.2. KMS AMIS projektuojama kaip vientisa sistema, užtikrinanti sklandų Techninėje 
+specifikacijoje numatytų funkcijų veikimą ir duomenų mainų greitaveiką. 
+3.2.1. Tiekėjas privalo užtikrinti, kad KMS AMIS programinis kodas ir duomenų bazės 
+struktūra būtų suprojektuota logiškai struktūrizuotu (angl. Layered architecture ) ir švariu (angl. 
+Clean code) būdu. 
+3.2.2. KMS AMIS architektūra turi būti realizuota taip, kad paslaugų sutarties vykdymo metu 
+ar jai pasibaigus būtų užtikrinta techninė galimybė papildyti sistemą naujais funkcionalumais, naujais 
+duomenų tipais ar kurti naujas integracines sąsajas tiesiogiai esamoje kodo bazėje, nepažeidžiant 
+bazinio sistemos vientisumo ir nestabdant jau veikiančių funkcijų bei jų prieinamumo naudotojams. 
+3.3. Duomenų surinkimo ir tikrinimo (validavimo) reikalavimai: 
+3.3.1. KMS AMIS privalo užtikrinti automatinį (periodinį) aplinkos monitoringo ir susijusių 
+meteorologinių duomenų surinkimą realiuoju laiku (pagal Techninės specifikacijos 3.4 papunktyje 
+nurodytą duomenų pateikimo periodiškumą) iš Klaipėdos miesto savivaldybės teritorijoje įrengtų 
+automatinių (stacionarių) aplinkos oro kokybės stebėjimo stotelių (toliau – Stotelės) (nuo 8 vnt. iki 
+10 vnt.) ir, esant Perkančiosios organizacijos poreikiui (KMS AMIS Palaikymo laikotarpiu), iš kitų 
+analogiškų trečiųjų šalių IoT įrenginių (nuo 5 vnt. iki 10 vnt.) – suderinamumą patikrinus Tiekėjui ir 
+patvirtinus Skyriui. 
+3.3.2. KMS AMIS turi palaikyti standartizuotus HTTP, HTTPS, IoT protokolus (AMQP, 
+MQTT, WebSockets), API, WMS ir WFS sąsajas bei duomenų formatus (CSV, JSON, XLS, XLSX, 
+XML). 
+3.3.3. KMS AMIS turi gebėti priimti Stotelių ir kitų IoT įrenginių atmintyje sukauptus 
+vėluojančius duomenis (angl. Backfilling) ir teisingai juos priskirti istoriniam laiko rėžiui pagal 
+pirminį laiko žymeklį (angl. Timestamp). 
+3.3.4. KMS AMIS turi gebėti perrašyti (angl. Overwrite) senus duomenis, jei po Specialistų 
+patikrinimo gaunami tikslesni duomenys, ir saugoti pakeistas duomenų versijas 55 (penkiasdešimt 
+penkis) mėnesius  nuo perdavimo–priėmimo akto, patvirtinančio sistemos sukūrimą, ištestavimą, 
+įdiegimą ir Specialistų apmokymą, pasirašymo dienos. 
+3.3.5. KMS AMIS privalo užtikrinti Specialistų galimybę rankiniu būdu įvesti ir redaguoti 
+periodinių laboratorinių tyrimų ir kitų matavimų duomenis per tam specialiai skirtas duomenų įvesties 
+formas. 
+3.3.6. Į KMS AMIS patenkantys pirminiai aplinkos monitoringo ir susiję meteorologiniai 
+duomenys privalo būti automatiškai tikrinami pagal Tiekėjo nustatytas logines tikrinimo (validacijos) 
+taisykles. 
+3.3.7. KMS AMIS užfiksavus neįprastą ar kritinį duomenų nuokrypį (skirtumas, lyginant su 
+konkretaus monitoringo taško kasmetinėmis aplinkos kokybės parametro reikšmėmis, yra daugiau 
+nei 100 % ir viršija konkrečiam parametrui Skyriaus nustatytą absoliutinę ribą – absoliutinės ribos 
+
+===PAGE BREAK===
+
+ 
+3 
+ 
+pateikiamos po paslaugų sutarties įsigaliojimo), įvesta reikšmė turi būti automatiškai pažymima kaip 
+„NEVALIDUS. Laukiama patvirtinimo“ ir sisteminiu pranešimu informuojami duomenis tikrinantys 
+Specialistai. 
+3.3.8. KMS AMIS turi automatiškai generuoti sisteminius pranešimus Tiekėjo paskirtam 
+administratoriui (toliau – Administratorius) ir Specialistams apie negaunamus duomenis iš 
+konkretaus monitoringo taško ilgiau nei nustatytas kintamas aplinkos kokybės parametro duomenų 
+pateikimo periodiškumas: nuo 30 (trisdešimties) minučių iki 12 (dvylikos) mėnesių. 
+3.4. Duomenys, reikšmių diapazonai, duomenų pateikimo periodiškumas: 
+3.4.1. Aplinkos monitoringo duomenys: 
+3.4.1.1. Aplinkos oro monitoringo duomenys: 
+3.4.1.1.1. Automatinių aplinkos oro kokybės stebėjimo stotelių duomenys: 
+3.4.1.1.1.1. Kietosios dalelės (KD 2,5): diapazonas nuo 0 µg/m 3 iki 10000 µg/m 3 (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 60 minučių. 
+3.4.1.1.1.2. Kietosios dalelės (KD 10): diapazonas nuo 0 µg/m 3 iki 10000 µg/m 3 (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 60 minučių. 
+3.4.1.1.1.3. Sieros vandenilis (H 2S): diapazonas nuo 0 µg/m 3 iki 1000 µg/m 3 (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 30 minučių. 
+3.4.1.1.1.4. Amoniakas (NH 3): diapazonas nuo 0 µg/m 3 iki 1000 µg/m 3 (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 60 minučių. 
+3.4.1.1.1.5. Lakieji organiniai junginiai (benzenas): diapazonas nuo 0 µg/m 3 iki 1000 µg/m 3 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 30 minučių. 
+3.4.1.1.1.6. Lakieji organiniai junginiai (toluenas): diapazonas nuo 0 µg/m 3 iki 1000 µg/m 3 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 30 minučių. 
+3.4.1.1.1.7. Lakieji organiniai junginiai (etilbenzenas): diapazonas nuo 0 µg/m 3 iki 
+1000 µg/m3 (imtinai), duomenų pateikimo į KMS AMIS dažnumas – 30 minučių. 
+3.4.1.1.1.8. Lakieji organiniai junginiai (m/p-ksilenas): diapazonas nuo 0 µg/m 3 iki 
+1000 µg/m3 (imtinai), duomenų pateikimo į KMS AMIS dažnumas – 30 minučių. 
+3.4.1.1.1.9. Lakieji organiniai junginiai (o-ksilenas): diapazonas nuo 0 µg/m 3 iki 1000 µg/m3 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 30 minučių. 
+3.4.1.1.1.10. Lakieji organiniai junginiai (suminiai LOJ): diapazonas nuo 0 µg/m 3 iki 
+1000 µg/m3 (imtinai), duomenų pateikimo į KMS AMIS dažnumas – 30 minučių. 
+3.4.1.1.1.11. Azoto dioksidas (NO 2): diapazonas nuo 0 µg/m 3 iki 1000 µg/m 3 (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 60 minučių. 
+3.4.1.1.1.12. Anglies monoksidas (CO): diapazonas nuo 0 mg/m 3 iki 100 mg/m 3 (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 60 minučių. 
+3.4.1.1.2. Monitoringo (laboratoriniai) duomenys: 
+3.4.1.1.2.1. Kietosios dalelės (KD 2,5): diapazonas nuo 0 µg/m 3 iki 10000 µg/m 3 (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.1.2.2. Kietosios dalelės (KD 10): diapazonas nuo 0 µg/m 3 iki 10000 µg/m 3 (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.1.2.3. Azoto dioksidas (NO 2): diapazonas nuo 0 µg/m 3 iki 1000 µg/m 3 (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.1.2.4. Sieros dioksidas (SO 2): diapazonas nuo 0 µg/m 3 iki 1000 µg/m 3 (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.1.2.5. Lakieji organiniai junginiai (benzenas): diapazonas nuo 0 µg/m 3 iki 1000 µg/m 3 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.1.2.6. Lakieji organiniai junginiai (toluenas): diapazonas nuo 0 µg/m 3 iki 1000 µg/m 3 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+
+===PAGE BREAK===
+
+ 
+4 
+ 
+3.4.1.1.2.7. Lakieji organiniai junginiai (etilbenzenas): diapazonas nuo 0 µg/m 3 iki 
+1000 µg/m3 (imtinai), duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.1.2.8. Lakieji organiniai junginiai (m/p-ksilenas): diapazonas nuo 0 µg/m 3 iki 
+1000 µg/m3 (imtinai), duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.1.2.9. Lakieji organiniai junginiai (o-ksilenas): diapazonas nuo 0 µg/m 3 iki 1000 µg/m3 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.1.2.10. Sieros vandenilis (H 2S): diapazonas nuo 0 µg/m 3 iki 1000 µg/m 3 (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.1.2.11. Amoniakas (NH3): diapazonas nuo 0 µg/m 3 iki 1000 µg/m3 (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.1.2.12. Anglies monoksidas (CO): diapazonas nuo 0 mg/m 3 iki 100 mg/m 3 (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.1.2.13. Suspenduotos kietosios dalelės (SKD): diapazonas nuo 0 mg/m 3 iki 100 mg/m3 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.2. Aplinkos triukšmo monitoringo duomenys: 
+3.4.1.2.1. Dienos triukšmo rodiklis (L dienos): diapazonas nuo 0 dBA iki 130 dBA (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.2.2. Vakaro triukšmo rodiklis (L vakaro): diapazonas nuo 0 dBA iki 130 dBA (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.2.3. Nakties triukšmo rodiklis (L nakties): diapazonas nuo 0 dBA iki 130 dBA (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.2.4. Dienos, vakaro ir nakties triukšmo rodiklis (L dvn): diapazonas nuo 0 dBA iki 
+130 dBA (imtinai), duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.2.5. Dienos maksimalus triukšmo lygis (Ldienos max): diapazonas nuo 0 dBA iki 130 dBA 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.2.6. Vakaro maksimalus triukšmo lygis (Lvakaro max): diapazonas nuo 0 dBA iki 130 dBA 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.2.7. Nakties maksimalus triukšmo lygis (Lnakties max): diapazonas nuo 0 dBA iki 130 dBA 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 120 dienų (3 kartus per metus). 
+3.4.1.3. Dirvožemio monitoringo duomenys: 
+3.4.1.3.1. Arsenas (As): diapazonas nuo 0 mg/kg iki 1000 mg/kg (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (nuo 1 karto iki 5 kartų per 5 metus). 
+3.4.1.3.2. Baris (Ba): diapazonas nuo 0 mg/kg iki 5000 mg/kg (imtinai), duomenų pateikimo 
+į KMS AMIS dažnumas – 12 mėnesių (nuo 1 karto iki 5 kartų per 5 metus). 
+3.4.1.3.3. Chromas (Cr): diapazonas nuo 0 mg/kg iki 1000 mg/kg (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (nuo 1 karto iki 5 kartų per 5 metus). 
+3.4.1.3.4. Kobaltas (Co): diapazonas nuo 0 mg/kg iki 1000 mg/kg (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (nuo 1 karto iki 5 kartų per 5 metus). 
+3.4.1.3.5. Varis (Cu): diapazonas nuo 0 mg/kg iki 1000 mg/kg (imtinai), duomenų pateikimo 
+į KMS AMIS dažnumas – 12 mėnesių (nuo 1 karto iki 5 kartų per 5 metus). 
+3.4.1.3.6. Manganas (Mn): diapazonas nuo 0 mg/kg iki 10000 mg/kg (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (nuo 1 karto iki 5 kartų per 5 metus). 
+3.4.1.3.7. Molibdenas (Mo): diapazonas nuo 0 mg/kg iki 1000 mg/kg (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (nuo 1 karto iki 5 kartų per 5 metus). 
+3.4.1.3.8. Nikelis (Ni): diapazonas nuo 0 mg/kg iki 1000 mg/kg (imtinai), duomenų pateikimo 
+į KMS AMIS dažnumas – 12 mėnesių (nuo 1 karto iki 5 kartų per 5 metus). 
+3.4.1.3.9. Švinas (Pb): diapazonas nuo 0 mg/kg iki 1000 mg/kg (imtinai), duomenų pateikimo 
+į KMS AMIS dažnumas – 12 mėnesių (nuo 1 karto iki 5 kartų per 5 metus). 
+
+===PAGE BREAK===
+
+ 
+5 
+ 
+3.4.1.3.10. Alavas (Sn): diapazonas nuo 0 mg/kg iki 1000 mg/kg (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (nuo 1 karto iki 5 kartų per 5 metus). 
+3.4.1.3.11. Vanadis (V): diapazonas nuo 0 mg/kg iki 2000 mg/kg (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (nuo 1 karto iki 5 kartų per 5 metus). 
+3.4.1.3.12. Cinkas (Zn): diapazonas nuo 0 mg/kg iki 3000 mg/kg (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (nuo 1 karto iki 5 kartų per 5 metus). 
+3.4.1.3.13. Naftos produktai (C 10-C40): diapazonas nuo 0 mg/kg iki 1000 mg/kg (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 12 mėnesių (nuo 1 karto iki 5 kartų per 5 metus). 
+3.4.1.4. Paviršinio vandens monitoringo duomenys: 
+3.4.1.4.1. Bendras azotas (N b): diapazonas nuo 0 mg/l iki 30 mg/l (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.4.2. Amonio azotas (NH 4-N): diapazonas nuo 0 mg/l iki 30 mg/l (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.4.3. Nitratų azotas (NO 3-N): diapazonas nuo 0 mg/l iki 30 mg/l (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.4.4. Bendras fosforas (P b): diapazonas nuo 0 mg/l iki 10 mg/l (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.4.5. Fosfatų fosforas (PO 4-P): diapazonas nuo 0 mg/l iki 10 mg/l (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.4.6. Biocheminis deguonies suvartojimas per 7 paras (BDS7): diapazonas nuo 0 mg/l iki 
+30 mg/l (imtinai), duomenų pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.4.7. Ištirpęs deguonis (O 2): diapazonas nuo 0 mg/l iki 50 mg/l (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.4.8. Seki (Secchi) gylis (S): diapazonas nuo 0 cm iki 300 cm (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.4.9. Fitoplanktono taksonominė sudėtis: diapazonas nuo 0 vnt. iki 100 vnt. (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.4.10. Fitoplanktono gausumas: diapazonas nuo 0 tūkst. vnt./l iki 40000 tūkst. vnt./l 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.4.11. Fitoplanktono biomasė: diapazonas nuo 0 mg/l iki 100 mg/l (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.4.12. Makrobestuburių taksonominė sudėtis: diapazonas nuo 0 vnt. iki 100 vnt. 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.4.13. Makrobestuburių gausumas: diapazonas nuo 0 ind./l iki 300 ind./l (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5. Gyvosios gamtos monitoringo duomenys: 
+3.4.1.5.1. Augalijos monitoringo duomenys: 
+3.4.1.5.1.1. Rūšių skaičius: diapazonas nuo 0 vnt. iki 200 vnt. (imtinai), duomenų pateikimo į 
+KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.1.2. Atskirų rūšių gausumas ir padengimas: diapazonas nuo 0 balų iki 10 balų 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.2. Invazinių rūšių monitoringo duomenys: 
+3.4.1.5.2.1. Rūšių skaičius: diapazonas nuo 0 vnt. iki 50 vnt. (imtinai), duomenų pateikimo į 
+KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.2.2. Atskirų rūšių gausumas ir padengimas: diapazonas nuo 0 balų iki 10 balų 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.3. Paukščių monitoringo duomenys: 
+
+===PAGE BREAK===
+
+ 
+6 
+ 
+3.4.1.5.3.1. Rūšių skaičius: diapazonas nuo 0 vnt. iki 500 vnt. (imtinai), duomenų pateikimo į 
+KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.3.2. Atskirų rūšių gausumas: diapazonas nuo 0 vnt. iki 2000 vnt. (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.4. Varninių paukščių monitoringo duomenys: 
+3.4.1.5.4.1. Rūšių skaičius: diapazonas nuo 0 vnt. iki 10 vnt. (imtinai), duomenų pateikimo į 
+KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.4.2. Atskirų rūšių gausumas: diapazonas nuo 0 vnt. iki 2000 vnt. (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.5. Šikšnosparnių monitoringo duomenys: 
+3.4.1.5.5.1. Rūšių skaičius: diapazonas nuo 0 vnt. iki 20 vnt. (imtinai), duomenų pateikimo į 
+KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.5.2. Atskirų rūšių gausumas: diapazonas nuo 0 vnt. iki 1500 vnt. (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.6. Varliagyvių ir roplių monitoringo duomenys: 
+3.4.1.5.6.1. Rūšių skaičius: diapazonas nuo 0 vnt. iki 30 vnt. (imtinai), duomenų pateikimo į 
+KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.6.2. Atskirų rūšių gausumas: diapazonas nuo 0 vnt. iki 200 vnt. (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.7. Žuvų monitoringo duomenys: 
+3.4.1.5.7.1. Rūšių skaičius: diapazonas nuo 0 vnt. iki 100 vnt. (imtinai), duomenų pateikimo į 
+KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.7.2. Atskirų rūšių gausumas telkiniuose: diapazonas nuo 0 ind./ha iki 3000 ind./ha 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.7.3. Atskirų rūšių biomasė telkiniuose: diapazonas nuo 0 kg/ha iki 500 kg/ha (imtinai), 
+duomenų pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.7.4. Atskirų rūšių gausumas upėse: diapazonas nuo 0 ind./100 m2 iki 3000 ind./100 m2 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.7.5. Atskirų rūšių biomasė upėse: diapazonas nuo 0 kg/100 m 2 iki 500 kg/100 m 2 
+(imtinai), duomenų pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.5.7.6. Individo amžius: diapazonas nuo 0 m. iki 30 m. (imtinai), duomenų pateikimo į 
+KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.6. Želdynų ir želdinių monitoringo duomenys: 
+3.4.1.6.1. Lajos būklė: diapazonas nuo 0 balų iki 10 balų (imtinai), duomenų pateikimo į 
+KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.6.2. Lapijos ir spyglių būklė: diapazonas nuo 0 balų iki 10 balų (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.6.3. Kamieno būklė: diapazonas nuo 0 balų iki 10 balų (imtinai), duomenų pateikimo į 
+KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.1.6.4. Žievės, kamieno, šakų, šaknų, lapų, spyglių mechaniniai pažeidimai: diapazonas 
+nuo 0 balų iki 10 balų (imtinai), duomenų pateikimo į KMS AMIS dažnumas – 12 mėnesių (1 kartą 
+per 5 metus). 
+3.4.1.6.5. Pomedžio būklė: diapazonas nuo 0 balų iki 10 balų (imtinai), duomenų pateikimo į 
+KMS AMIS dažnumas – 12 mėnesių (1 kartą per 5 metus). 
+3.4.2. Automatinių aplinkos oro kokybės stebėjimo stotelių meteorologiniai duomenys: 
+3.4.2.1. Aplinkos oro temperatūra: diapazonas nuo -50 °C iki +50 °C (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 60 minučių. 
+
+===PAGE BREAK===
+
+ 
+7 
+ 
+3.4.2.2. Santykinis oro drėgnis: diapazonas nuo 0 % RH iki 100 % RH (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 60 minučių. 
+3.4.2.3. Atmosferos slėgis: diapazonas nuo 300 hPa iki 1100 hPa (imtinai), duomenų 
+pateikimo į KMS AMIS dažnumas – 60 minučių. 
+3.4.2.4. Vėjo greitis: diapazonas nuo 0 m/s iki 40 m/s (imtinai), duomenų pateikimo į 
+KMS AMIS dažnumas – 60 minučių. 
+3.4.2.5. Vėjo kryptis: diapazonas nuo 0° iki 360° (imtinai), duomenų pateikimo į KMS AMIS 
+dažnumas – 60 minučių. 
+3.5. Duomenų saugojimo ir saugumo reikalavimai: 
+3.5.1. Duomenų saugojimui turi būti naudojama architektūra, optimizuota laiko eilučių 
+duomenims (angl. Time-Series Data ), užtikrinanti greitą įvestų duomenų apdorojimą, analizę ir 
+paiešką. 
+3.5.2. Visi automatiniai ir istoriniai aplinkos monitoringo ir susiję meteorologiniai duomenys 
+KMS AMIS duomenų bazėje saugomi ne mažiau kaip 55 (penkiasdešimt penkis) mėnesius  nuo 
+perdavimo–priėmimo akto, patvirtinančio sistemos sukūrimą, ištestavimą, įdiegimą ir Specialistų 
+apmokymą, pasirašymo dienos, neprarandant jų pirminio detalumo. 
+3.5.3. Duomenų prieigos kontrolė turi būti užtikrinama remiantis Techninės specifikacijos 3.8 
+papunkčio reikalavimais. 
+3.5.4. KMS AMIS duomenų bazė turi palaikyti atsarginių kopijų politiką be pagrindinių 
+sistemos funkcijų sustabdymo. 
+3.6. Duomenų analizės ir geoerdvinio atvaizdavimo reikalavimai: 
+3.6.1. KMS AMIS turi turėti duomenų filtravimo funkciją, leidžiančią filtruoti duomenis 
+pagal pasirinktą laikotarpį, duomenų tipą (automatiniai ir istoriniai), Klaipėdos miesto savivaldybės 
+mikrorajoną, adresą, monitoringo dalį, monitoringo vietos unikalų koduotą numerį, monitoringo 
+vietos (dalinį ar visą) pavadinimą, konkretų stebimą aplinkos kokybės parametro rodiklį bei ribinių 
+verčių viršijimo atvejus. 
+3.6.2. KMS AMIS turi turėti duomenų statistinės analizės funkciją, leidžiančią apskaičiuoti 
+paros, savaitės, mėnesio, metų, pasirinkto laikotarpio aplinkos monitoringo ir susijusių 
+meteorologinių duomenų mažiausią ir didžiausią skaitinę reikšmę, vidurkį (aplinkos triukšmo 
+monitoringo duomenims turi būti skaičiuojamas logaritminis vidurkis), ribinių verčių viršijimų atvejų 
+kiekį, tendenciją (lyginant su praėjusiu (analogiškos trukmės) laikotarpiu) ir leidžiančią palyginti 
+pasirinktos aplinkos monitoringo dalies skirtingų taškų duomenis tarpusavyje. 
+3.6.3. KMS AMIS turi turėti duomenų grafinės ir koreliacinės analizės funkcijas: 
+3.6.3.1. Grafinės analizės funkciją, leidžiančią viename sugeneruotame grafike (stulpelinėje 
+ar linijinėje diagramoje) vizualiai palyginti pasirinktos aplinkos monitoringo dalies skirtingų taškų 
+aplinkos kokybės parametro rodiklių duomenis tarpusavyje. 
+3.6.3.2. Koreliacinės analizės funkciją, leidžiančią įvertinti matematinį ryšį tarp dviejų 
+skirtingų parametrų (meteorologinių parametrų ir aplinkos oro kokybės parametrų) ir vizualizuoti šį 
+ryšį sugeneruotoje sklaidos diagramoje (angl. Scatter plot) su apskaičiuotu koreliacijos koeficientu. 
+3.6.4. KMS AMIS privalo turėti automatizuotą ataskaitų generavimo funkciją, leidžiančią 
+eksportuoti paros, savaitės, mėnesio, metų, pasirinkto laikotarpio aplinkos monitoringo ir susijusius 
+meteorologinius duomenis, apskaičiuotus statistinius duomenis, sugeneruotus grafikus ir diagramas 
+ar bendrą suvestinę PDF, XLSX bei CSV formatais. 
+3.6.5. KMS AMIS statistinės, grafinės ir koreliacinės analizės bei ataskaitų generavimo 
+funkcijų naudojimo užklausos turi būti optimizuotos naudojant duomenų spartinimą (angl. Caching) 
+ir užklausų ribojimą (angl. Rate-Limiting), užtikrinant, kad Viešųjų naudotojų veiksmai nesukeltų 
+kritinės serverio apkrovos. 
+
+===PAGE BREAK===
+
+ 
+8 
+ 
+3.6.6. KMS AMIS privalo atvaizduoti monitoringo taškus interaktyviame žemėlapyje 
+(pasirinktinai: OpenStreetMap, Google Maps arba kitas su Perkančiąja organizacija suderintas 
+kartografinis pagrindas), palaikančiame ortofoto sluoksnio ir Klaipėdos miesto savivaldybės 
+mikrorajonų ribų sluoksnio integraciją. Sistema privalo palaikyti erdvinių duomenų įkėlimą ir 
+apdorojimą naudojant Lietuvos koordinačių sistemą LKS-94, užtikrinant teisingą duomenų 
+atvaizdavimą pagal teminę aplinkos monitoringo dalį ir aplinkos kokybės parametrą. 
+3.6.7. Žemėlapis turi palaikyti sluoksnių valdymo funkcionalumą, leidžiantį pasirinktinai 
+įjungti arba išjungti skirtingų aplinkos monitoringo dalių ir aplinkos kokybės parametrų sluoksnius. 
+3.6.8. Kiekvienas aplinkos monitoringo taškas žemėlapyje privalo turėti sutrumpintą koduotą 
+pavadinimą, kuris vizualiai atvaizduojamas žemėlapyje. 
+3.6.8.1. Paspaudus ant taško turi atsidaryti išsamesnės informacijos langas (angl. Pop-up / Info 
+window), kuriame turi būti pateikiama: 
+3.6.8.1.1. Monitoringo taško visas pavadinimas. 
+3.6.8.1.2. Monitoringo taško koordinatės (Lietuvos koordinačių sistemoje LKS-94). 
+3.6.8.1.3. Klaipėdos miesto savivaldybės mikrorajono pavadinimas. 
+3.6.8.1.4. Aktualiausi monitoringo ir susiję meteorologiniai duomenys su laikotarpio 
+pasirinkimo galimybe (pasirinktinai: paros, savaitės, mėnesio, metų (pateikiami vidurkiai, suvesti į 
+lentelę arba grafiką)). 
+3.6.8.1.5. Taikoma norma (rekomenduojama, siektina, ribinė arba kita teisės aktuose nustatyta 
+vertė). 
+3.6.8.1.6. Duomenų atnaujinimo data ir laikas. 
+3.6.9. Kiekvienas aplinkos monitoringo taškas interaktyviame žemėlapyje privalo turėti 
+dinamišką spalvinį kodavimą (angl. Color-coding), kintamą priklausomai nuo paskutinio matavimo 
+reikšmės santykio su nustatytomis pasirinkto aplinkos kokybės parametro vertėmis 
+(rekomenduojamomis, siektinomis, ribinėmis arba kitomis vertėmis). 
+3.6.10. Žemėlapis, aktyviame Klaipėdos miesto savivaldybės mikrorajonų ribų sluoksnyje, 
+privalo palaikyti plotinį dinamišką spalvinį kodavimą: 
+3.6.10.1. Mikrorajono plotas privalo turėti dinamišką spalvinį (50 % permatomumo) 
+kodavimą, kintamą priklausomai nuo paskutinių tame plote esančių monitoringo taškų matavimų 
+reikšmių vidurkio santykio su nustatytomis pasirinkto aplinkos kokybės parametro vertėmis 
+(rekomenduojamomis, siektinomis, ribinėmis arba kitomis vertėmis). 
+3.6.10.2. Jeigu mikrorajone nėra atitinkamų aplinkos monitoringo taškų, jo plotas žymimas 
+pilka spalva. 
+3.6.11. Žemėlapyje turi būti integruota atstumo (m) nuo taško A iki taško B matavimo 
+funkcija. 
+3.7. Viešųjų naudotojų informavimo reikalavimai: 
+3.7.1. Informacija Viešiesiems naudotojams turi būti pateikiama supaprastinta, lengvai 
+suprantama forma – naudojant standartizuotą Aplinkos oro kokybės indeksą (angl. Air quality index), 
+spalvines skales ar intuityvius infografikus. 
+3.7.2. KMS AMIS turi užtikrinti galimybę Viešiesiems naudotojams užsiprenumeruoti 
+automatinius (įspėjamuosius) pranešimus el. paštu arba interneto naršyklės trumpaisiais pranešimais 
+(angl. Push notifications). 
+3.7.3. KMS AMIS turi užtikrinti galimybę Specialistams per vidinę sistemos administravimo 
+ir valdymo aplinką konfigūruoti automatinių pranešimų siuntimo režimą ir redaguoti jų tekstą: 
+3.7.3.1. Sistema turi palaikyti du pranešimų publikavimo režimus: „Automatinis 
+publikavimas“ (pranešimai išsiunčiami iškart užfiksavus aplinkos kokybės parametro nustatytos 
+vertės viršijimą) ir „Publikavimas po Specialisto patvirtinimo“ (pranešimas sugeneruojamas, tačiau 
+išsiunčiamas tik Specialistams jį peržiūrėjus ir patvirtinus). 
+
+===PAGE BREAK===
+
+ 
+9 
+ 
+3.7.3.2. Specialistams turi būti suteikta funkcija redaguoti pranešimo tekstinį šabloną arba 
+konkretų sugeneruotą pranešimą prieš jį išsiunčiant Viešiesiems naudotojams. 
+3.7.4. Automatinių pranešimų prenumeratos valdymo sąsaja, prieš prenumeratos patvirtinimą, 
+turi leisti Viešiesiems naudotojams pasirinkti dominantį (-čius) Klaipėdos miesto savivaldybės 
+mikrorajoną (-us), monitoringo dalį (-is), monitoringo tašką (-us), aplinkos kokybės parametrą (-us). 
+3.7.5. KMS AMIS privalo turėti funkcionalumą, leidžiantį Specialistams vienu paspaudimu 
+eksportuoti įspėjamąjį pranešimą į Klaipėdos miesto savivaldybės interneto svetainę. 
+3.8. Saugumo ir prieigos prie KMS AMIS reikalavimai: 
+3.8.1. Visi duomenų srautai tarp naudotojo įrenginio ir KMS AMIS serverio turi būti 
+šifruojami naudojant saugų HTTPS protokolą su galiojančiu TLS (ne žemesnės kaip 1.3 versijos) 
+sertifikatu. 
+3.8.2. KMS AMIS turi būti apsaugota nuo kibernetinių pažeidžiamumų, vadovaujantis 
+OWASP (angl. Open Web Application Security Project) rekomendacijomis. 
+3.8.3. KMS AMIS privalo palaikyti naudotojų teisių diferencijavimą (Administratorius, 
+Specialistas, Viešasis naudotojas). 
+3.8.4. Naudotojų teisės: 
+3.8.4.1. Administratorius: visos teisės valdyti KMS AMIS konfigūraciją, keisti sistemos 
+parametrus ir dizainą, redaguoti struktūrą, redaguoti ir naikinti naudotojų teises, keisti integracinių 
+sąsajų nustatymus, peržiūrėti ir eksportuoti veiksmų žurnalus (angl. Audit logs). 
+3.8.4.2. Specialistas: prieiga prie visų duomenų, teisė rankiniu būdu įvesti ir redaguoti 
+duomenis, redaguoti sistemoje viešinamą tekstinę ir vaizdinę medžiagą, konfigūruoti automatinių 
+pranešimų siuntimo režimą ir redaguoti jų tekstą ar šablonus, peržiūrėti ir eksportuoti veiksmų 
+žurnalus, patvirtinti automatinius pranešimus Viešiesiems naudotojams, galimybė peržiūrėti 
+interaktyvų žemėlapį, atlikti statistinę, grafinę ir koreliacinę analizę, užsisakyti automatinių 
+pranešimų prenumeratą, atsisiųsti aplinkos monitoringo ir susijusius meteorologinius duomenis. 
+3.8.4.3. Viešasis naudotojas: prieiga prie aplinkos monitoringo ir susijusių meteorologinių 
+duomenų, galimybė peržiūrėti interaktyvų žemėlapį, atlikti statistinę, grafinę ir koreliacinę analizę 
+(taikomi Techninės specifikacijos 3.6.5 papunktyje numatyti ribojimai), užsisakyti automatinių 
+pranešimų prenumeratą, atsisiųsti aplinkos monitoringo ir susijusius meteorologinius duomenis. 
+3.8.5. KMS AMIS privalo automatiškai pildyti veiksmų žurnalus su galimybe juos 
+eksportuoti ir peržiūrėti. 
+3.8.6. KMS AMIS prenumeratų valdymo ir Viešųjų naudotojų duomenų (užsiprenumeravusių 
+automatinius pranešimus) saugojimo funkcionalumas privalo visiškai atitikti aktualiausius BDAR 
+reikalavimus (užtikrinant dvigubo patvirtinimo (angl. Double Opt-In ) principą, aiškius sutikimo 
+kontrolės langus ir galimybę naudotojui vienu paspaudimu visiškai išsitrinti savo duomenis iš 
+sistemos). 
+3.8.7. Tiekėjas privalo savo jėgomis parengti KMS AMIS privatumo politiką (angl. Privacy 
+Policy) ir slapukų politiką (angl. Cookie Policy ) (toliau – Dokumentai), visiškai atitinkančias 
+Lietuvos Respublikos asmens duomenų teisinės apsaugos įstatymo ir BDAR reikalavimus. 
+3.8.7.1. Parengti Dokumentų projektai turi būti pateikti suderinimui Perkančiajai organizacijai 
+likus ne mažiau kaip 10 (dešimt) darbo dienų iki KMS AMIS priėmimo testavimo (angl. User 
+Acceptance Testing) pradžios. 
+3.8.7.2. Tiekėjas privalo integruoti su Perkančiąja organizacija suderintus Dokumentus į 
+KMS AMIS aplinką taip, kad jie būtų lengvai pasiekiami ir matomi visiems naudotojams. 
+3.8.8. KMS AMIS renkamų, saugomų ir tvarkomų asmens duomenų apimtis turi būti griežtai 
+ribojama pagal naudotojų grupes: 
+3.8.8.1. Administratorius ir Specialistas. KMS AMIS aplinkoje renkami, saugomi ir tvarkomi 
+šie naudotojų duomenys: vardas, pavardė, pareigos, darbinis el. pašto adresas. Duomenys naudojami 
+
+===PAGE BREAK===
+
+ 
+10 
+ 
+naudotojų autorizacijai, veiksmų žurnalams ir dviejų veiksnių autentifikavimo (angl. Two-Factor 
+Authentication – 2FA) funkcionalumui užtikrinti. 
+3.8.8.2. Viešasis naudotojas (užsisakęs prenumeratą). KMS AMIS aplinkoje renkami, 
+saugomi ir tvarkomi šių naudotojų el. pašto adresai. Duomenys naudojami automatinių pranešimų 
+siuntimui. Jokie kiti naudotoją identifikuojantys duomenys prenumeratos tikslais neturi būti renkami. 
+3.8.9. KMS AMIS privalo būti realizuotas saugus dviejų veiksnių autentifikavimo (2FA) 
+funkcionalumas, kuris būtų privalomas visiems Administratoriaus ir Specialisto teises turintiems 
+naudotojams, jungiantis prie sistemos administravimo ir valdymo aplinkos. Viešiesiems naudotojams 
+2FA reikalavimas netaikomas. 
+3.8.9.1. Administratoriui ir Specialistui pirmą kartą prisijungus prie KMS AMIS, šie 
+naudotojai privalomai turi pasikeisti laikinąjį slaptažodį. 
+3.8.9.2. Prisijungimo metu, naudotojui teisingai suvedus autorizacijos duomenis (naudotojo 
+vardą ir slaptažodį), KMS AMIS privalo inicijuoti antrąjį apsaugos lygį ir leisti naudotojui prisijungti 
+tik įvedus unikalų, laike kintantį vienkartinį kodą (angl. Time-based One-time Password), atitinkantį 
+IETF RFC 6238 standartą. 
+3.8.9.3. Tiekėjas, suderinęs su Perkančiąja organizacija, KMS AMIS turi realizuoti bent du 
+dviejų veiksnių autentifikacijos būdus, naudojant nemokamas rinkoje prieinamas autentifikavimo 
+programėles (Google Authenticator, Microsoft Authenticator ar kitą analogišką programėlę) arba 
+naudotojo darbinį el. paštą. KMS AMIS diegimo metu turi būti galutinai nuspręsta, kurie būdai bus 
+naudojami. 
+3.9. Integraciniai reikalavimai: 
+3.9.1. KMS AMIS privalo užtikrinti automatizuotą duomenų importavimą iš Stotelių ir IoT 
+įrenginių, palaikant standartinius duomenų perdavimo protokolus. 
+3.9.2. KMS AMIS privalo turėti viešą API sąsają, leidžiančią trečiosioms šalims ir Lietuvos 
+atvirų duomenų portalui (LADP) automatiškai nuskaityti aplinkos monitoringo duomenis mašininio 
+skaitymo formatu (JSON, GeoJSON arba CSV). 
+3.10. KMS AMIS struktūros ir dizaino reikalavimai: 
+3.10.1. KMS AMIS interneto puslapis turi turėti mažiausiai šias pagrindines dalis: 
+3.10.1.1. Pagrindinis meniu: 
+3.10.1.1.1. KMS AMIS: 
+3.10.1.1.1.1. Bendra informacija. 
+3.10.1.1.1.2. Naudotojo vadovas. 
+3.10.1.1.2. Klaipėdos miesto savivaldybės aplinkos monitoringas (kiekvienoje iš žemiau 
+išvardintų monitoringo dalių turi būti pateikiama bendra informacija, realizuotas duomenų 
+atvaizdavimas interaktyviame žemėlapyje bei statistinės, grafinės ir koreliacinės analizės funkcijos 
+pagal Techninės specifikacijos 3.6 papunkčio reikalavimus): 
+3.10.1.1.2.1. Aplinkos oro monitoringas: 
+3.10.1.1.2.1.1. Automatinių aplinkos oro kokybės stebėjimo stotelių duomenys. 
+3.10.1.1.2.1.2. Monitoringo (laboratoriniai) duomenys. 
+3.10.1.1.2.2. Aplinkos triukšmo monitoringas. 
+3.10.1.1.2.3. Dirvožemio monitoringas. 
+3.10.1.1.2.4. Paviršinio vandens monitoringas. 
+3.10.1.1.2.5. Gyvosios gamtos monitoringas: 
+3.10.1.1.2.5.1. Augalijos monitoringas. 
+3.10.1.1.2.5.2. Invazinių rūšių monitoringas. 
+3.10.1.1.2.5.3. Paukščių monitoringas. 
+3.10.1.1.2.5.4. Varninių paukščių monitoringas. 
+3.10.1.1.2.5.5. Šikšnosparnių monitoringas. 
+
+===PAGE BREAK===
+
+ 
+11 
+ 
+3.10.1.1.2.5.6. Varliagyvių ir roplių monitoringas. 
+3.10.1.1.2.5.7. Žuvų monitoringas. 
+3.10.1.1.2.6. Želdynų ir želdinių monitoringas. 
+3.10.1.1.3. Monitoringo metinės ataskaitos. 
+3.10.1.1.4. Automatinių pranešimų prenumerata. 
+3.10.1.2. Interaktyvus žemėlapis (bendras arba integruotas į monitoringo dalis): 
+3.10.1.2.1. Žemėlapis su aktualiausiu ortofoto sluoksniu (žemėlapio funkcionalumas pateiktas 
+Techninės specifikacijos 3.6 papunktyje). 
+3.10.1.2.2. Žemėlapis su Klaipėdos miesto savivaldybės mikrorajonų ribų sluoksniu 
+(žemėlapio funkcionalumas pateiktas Techninės specifikacijos 3.6 papunktyje). 
+3.10.1.3. Meteorologinė informacija (KMS AMIS pagrindiniame lange turi būti vizualiai 
+pateikta aktuali meteorologinė informacija iš Stotelių (meteorologinių duomenų vidurkis). 
+3.10.2. KMS AMIS privalo būti visiškai pritaikyta mobiliųjų įrenginių ekranams, naudojant 
+adaptyvųjį dizainą (angl. Responsive Web Design). 
+3.10.3. KMS AMIS dizainas turi atitikti Klaipėdos miesto vizualinio identiteto vadove 
+(nuoroda: https://brandpad.io/klaipeda-identitetas/) nurodytus reikalavimus. 
+3.10.4. KMS AMIS turi mažiausiai atitikti WCAG (angl. Web Content Accessibility 
+Guidelines) 2.2 AA lygį. 
+4. Paslaugų kiti reikalavimai: 
+4.1. Tiekėjas privalo atlikti KMS AMIS integracinius, sisteminius ir funkcinius testus ir po jų 
+atlikimo pateikti Perkančiajai organizacijai skaitmeninę pažymą apie atliktus testus ir jų rezultatus. 
+4.1.1. Perkančioji organizacija turi teisę atlikti KMS AMIS priėmimo testus. 
+4.2. Tiekėjas, po KMS AMIS ištestavimo ir įdiegimo, Palaikymo laikotarpio pradžioje, 
+privalo per 2 (dviejų) mėnesių laikotarpį į sistemą perkelti visus Perkančiosios organizacijos turimus 
+istorinius Klaipėdos miesto savivaldybės aplinkos monitoringo duomenis (monitoringo duomenų 
+formatai: CSV, XLS, XLSX, metinių ataskaitų formatas – PDF), kurie yra saugomi esamoje 
+informacinėje sistemoje, adresu: https://www.aplinka.klaipeda.lt. 
+4.2.1. Perkančioji organizacija pateikia Tiekėjui istorinius monitoringo duomenis tvarkingu, 
+Tiekėjui tinkamu, struktūrizuotu CSV, XLS arba XLSX formatu, o PDF dokumentai pateikiami tik 
+kaip metinių ataskaitų failai. 
+4.3. Tiekėjas, po KMS AMIS įdiegimo, turi surengti nuotolinius mokymus 2 (dviem) 
+Specialistams darbui su sistema. Mokymų trukmė ne trumpesnė kaip 5 (penkios) valandos. Mokymai 
+turi būti įrašomi, o jų vaizdo įrašas perduodamas Perkančiajai organizacijai tolimesniam naudojimui 
+(naujų Specialistų apmokymui). 
+4.4. Tiekėjas privalo pateikti visą būtinąją KMS AMIS skaitmeninę dokumentaciją (iki 
+priėmimo testavimo pradžios): testavimo rezultatus, specifikaciją, schemą ir naudotojo vadovą – 
+lietuvių kalba ir PDF formatu bei kodo ir API dokumentaciją (GitHub/GitLab) – lietuvių ir (arba) 
+anglų kalba, PDF ir (arba) Markdown formatu. 
+4.5. KMS AMIS Palaikymo laikotarpiu Administratorius privalo užtikrinti klaidų šalinimą 
+pagal Techninės specifikacijos 1 priede pateiktus paslaugų lygio (angl. Service Level Agreement  – 
+SLA) reikalavimus. 
+4.5.1. Pranešimai apie klaidas teikiami Administratoriui per klaidų registravimo sistemą 
+(angl. Service Desk / Helpdesk ) arba el. paštu. Reakcijos laikas pradedamas skaičiuoti nuo 
+automatinio arba rankinio pranešimo išsiuntimo ar užregistravimo momento. 
+___________________ 
+ 
+
+===PAGE BREAK===
+
+ Techninės specifikacijos 
+1 priedas 
+12 
+ 
+KMS AMIS PALAIKYMO LAIKOTARPIO PASLAUGŲ LYGIO (SLA) REIKALAVIMAI 
+Klaidos lygis Klaidos aprašymas ir kriterijai Maksimalus 
+reakcijos laikas 
+Maksimalus 
+ištaisymo laikas 
+Suminis klaidos 
+ištaisymo laikas 
+Paslaugų teikimo 
+režimas 
+I lygis 
+(Saugumo klaida) 
+Sistemoje užfiksuotas kibernetinis 
+incidentas, duomenų saugumo 
+pažeidimas arba kritinis OWASP 
+pažeidžiamumas, keliantis grėsmę 
+duomenų vientisumui. 
+Neturi viršyti 1 val. 
+nuo pranešimo 
+išsiuntimo ar 
+užregistravimo 
+momento. 
+Neturi viršyti 4 val. 
+nuo reakcijos laiko 
+pabaigos. 
+Neturi viršyti 5 val. 24 val. per parą, 7 
+dienas per savaitę 
+(24/7). 
+II lygis 
+(Kritinė klaida) 
+Sistema ar esminės jos dalys yra 
+visiškai nepasiekiamos. 
+Visiškai sutrikęs automatinis 
+duomenų surinkimas (realiuoju 
+laiku) iš Stotelių. 
+Neturi viršyti 2 val. 
+nuo pranešimo 
+išsiuntimo ar 
+užregistravimo 
+momento. 
+Neturi viršyti 6 val. 
+nuo reakcijos laiko 
+pabaigos. 
+Neturi viršyti 8 val. 24 val. per parą, 7 
+dienas per savaitę 
+(24/7). 
+III lygis 
+(Tipinė klaida) 
+Sutrikusios sistemos funkcijos 
+(pavyzdžiui: rankinis duomenų 
+įvedimas; duomenų filtravimas; 
+statistinė, grafinė ir koreliacinė 
+duomenų analizė; ataskaitų 
+generavimas; monitoringo rezultatų 
+atvaizdavimas žemėlapyje), tačiau 
+sistema pasiekiama ir automatinis 
+duomenų surinkimas veikia. 
+Neturi viršyti 4 val. 
+nuo pranešimo 
+išsiuntimo ar 
+užregistravimo 
+momento. 
+Neturi viršyti 24 val. 
+nuo reakcijos laiko 
+pabaigos. 
+Neturi viršyti 28 val. Darbo dienomis, 
+nuo 8:00 iki 17:00 
+val. 
+IV lygis 
+(Netipinė klaida) 
+Vizualiniai dizaino, naudotojo 
+sąsajos neatitikimai, tekstinės 
+klaidos ar kiti Perkančiosios 
+organizacijos nustatyti trūkumai, 
+neturintys jokios įtakos sistemos 
+funkcionalumui ar duomenų 
+apdorojimui. 
+Neturi viršyti 24 val. 
+nuo pranešimo 
+išsiuntimo ar 
+užregistravimo 
+momento. 
+Neturi viršyti 72 val. 
+nuo reakcijos laiko 
+pabaigos. 
+Neturi viršyti 96 val. Darbo dienomis, 
+nuo 8:00 iki 17:00 
+val. 
+Pastabos: 
+1. I ir II lygio klaidos taisomos nepertraukiamai (24/7), įskaitant poilsio ir šventines dienas. 
+
+===PAGE BREAK===
+
+ Techninės specifikacijos 
+1 priedas 
+13 
+ 
+2. III ir IV lygio klaidų reakcijos ir ištaisymo laikas skaičiuojamas tik paslaugų teikimo režime nurodytomis darbo valandomis. Jei pranešimas 
+apie III ar IV lygio klaidą pateikiamas po 17:00 val., poilsio ar šventinę dieną, laiko skaičiavimas pradedamas nuo artimiausios darbo dienos 8:00 val. 
+3. Suminis klaidos ištaisymo laikas susideda iš Maksimalaus reakcijos laiko ir Maksimalaus ištaisymo laiko. Viršijus suminį laiką, Tiekėjui 
+taikomos paslaugų sutartyje numatytos baudos. 
+4. Klaidos ištaisymo laiko skaičiavimas gali būti stabdomas tik tuo atveju, jei Administratorius negali tęsti darbų dėl priežasčių, priklausančių 
+nuo Perkančiosios organizacijos arba trečiųjų šalių, ir Administratorius apie tai oficialiai informavo Perkančiąją organizaciją ir Specialistą klaidų 
+registravimo sistemoje ar el. paštu. 
+___________________ 

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Saugus prisijungimas prie KMS AMIS aplinkos monitoringo valdymo pulto.">
+  <title>Prisijungimas prie valdymo pulto · KMS AMIS</title>
+  <link rel="stylesheet" href="../../css/theme.css">
+  <link rel="stylesheet" href="../../css/sections.css">
+</head>
+<body class="admin-login-page">
+  <main class="admin-login-card">
+    <a class="admin-login-brand" href="../../index.html"><span class="brand-mark" aria-hidden="true">KMS</span><span><strong>KMS AMIS</strong><small>Valdymo pultas</small></span></a>
+    <div id="login-stage-credentials" class="login-stage">
+      <p class="section-kicker" style="margin-top:28px">Prisijungimas</p><h1>Prisijungimas prie valdymo pulto</h1><p class="lede">Prisijunkite, kad galėtumėte tvarkyti priėmimo srautus, duomenų kokybę ir pranešimus.</p>
+      <form id="credentials-form"><div class="field-group"><label class="field-label" for="login-username">Naudotojo vardas</label><input class="field" id="login-username" name="username" autocomplete="username" required placeholder="administratorius"></div><div class="field-group" style="margin-top:13px"><label class="field-label" for="login-password">Slaptažodis</label><input class="field" id="login-password" name="password" type="password" autocomplete="current-password" required placeholder="••••••••"></div><p class="admin-form-message" id="credentials-message" hidden role="alert"></p><div class="page-actions"><button class="button button--primary" type="submit">Tęsti</button></div></form>
+      <p class="login-help">Demonstracinė autentifikacija. Tikra autentifikacija ir TOTP RFC 6238 įgyvendinama serveryje.</p>
+      <p class="fine-print" style="margin-top:12px">Demo paskyros: administratorius / admin · admin / Klaipeda#2026-10 · specialistas / spec</p>
+    </div>
+    <div id="login-stage-password" class="login-stage" hidden>
+      <p class="section-kicker" style="margin-top:28px">Privalomas veiksmas</p><h1>Pakeiskite laikiną slaptažodį</h1><p class="lede">Prieš tęsdami nustatykite bent 12 simbolių slaptažodį.</p>
+      <form id="password-form"><div class="field-group"><label class="field-label" for="new-password">Naujas slaptažodis</label><input class="field" id="new-password" type="password" minlength="12" required autocomplete="new-password"><p class="field-help" id="password-strength">Stiprumas: įveskite slaptažodį.</p></div><div class="field-group" style="margin-top:13px"><label class="field-label" for="new-password-repeat">Pakartokite slaptažodį</label><input class="field" id="new-password-repeat" type="password" minlength="12" required autocomplete="new-password"></div><p class="admin-form-message" id="password-message" hidden role="alert"></p><div class="page-actions"><button class="button button--primary" type="submit">Išsaugoti ir tęsti</button></div></form>
+    </div>
+    <div id="login-stage-totp" class="login-stage" hidden>
+      <p class="section-kicker" style="margin-top:28px">Antrasis veiksnys</p><h1>Patvirtinkite prisijungimą</h1><p class="lede">Įveskite šiuo metu rodomą demonstracinį šešių skaitmenų kodą.</p>
+      <div class="totp-panel"><p>Demonstracinis TOTP kodas šiuo metu:</p><strong class="totp-code" id="totp-code">123456</strong><div class="totp-progress" aria-hidden="true"><span id="totp-progress"></span></div></div>
+      <form id="totp-form"><div class="field-group"><label class="field-label" for="totp-input">TOTP kodas</label><input class="field" id="totp-input" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" required autocomplete="one-time-code" placeholder="123456"></div><p class="admin-form-message" id="totp-message" hidden role="alert"></p><div class="page-actions"><button class="button button--primary" type="submit">Patvirtinti ir įeiti</button></div></form>
+    </div>
+  </main>
+  <script type="module" src="../../js/pages/admin/login.js"></script>
+</body>
+</html>

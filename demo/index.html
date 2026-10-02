@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Klaipėdos miesto savivaldybės aplinkos monitoringo informacinės sistemos demonstracinis portalas.">
+  <link rel="icon" href="data:,">
+  <title>KMS AMIS | Klaipėdos aplinkos monitoringas</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+  <a class="skip-link" href="#turinys">Pereiti prie turinio</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand-lockup" href="index.html" aria-label="KMS AMIS pagrindinis puslapis">
+        <span class="brand-mark" aria-hidden="true">KMS</span>
+        <span>
+          <strong>Klaipėdos miesto savivaldybės aplinkos monitoringo informacinė sistema</strong>
+          <small>KMS AMIS · viešasis portalas</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Pagrindinis meniu"><ul>
+        <li><details><summary>KMS AMIS<span class="chevron" aria-hidden="true"></span></summary><ul><li><a href="pages/bendra-info.html">Bendra informacija</a></li><li><a href="pages/vadovas.html">Naudotojo vadovas</a></li></ul></details></li>
+        <li><details><summary>Monitoringas<span class="chevron" aria-hidden="true"></span></summary><ul><li class="nav-panel-heading">Klaipėdos miesto savivaldybės aplinkos monitoringas</li>
+          <li class="nav-group-label">Aplinkos oro monitoringas</li><li><a href="pages/oro.html">Automatinių stotelių duomenys</a></li><li><a href="pages/truksmas.html">Aplinkos triukšmo monitoringas</a></li><li><a href="pages/dirvezemis.html">Dirvožemio monitoringas</a></li><li><a href="pages/vanduo.html">Paviršinio vandens monitoringas</a></li>
+          <li class="nav-group-label">Gyvosios gamtos monitoringas</li><li><a href="pages/gyvoji_gamta.html">Gyvosios gamtos monitoringas</a></li><li><a href="pages/zeldynai.html">Želdynų ir želdinių monitoringas</a></li>
+        </ul></details></li>
+        <li><a href="pages/ataskaitos.html">Ataskaitos</a></li><li><a href="pages/prenumerata.html">Prenumerata</a></li><li><a href="pages/zemelapis.html">Žemėlapis</a></li>
+      </ul></nav>
+    </div>
+    <div class="brand-stripe" aria-hidden="true"><span class="stripe-sea"></span><span class="stripe-shore"></span><span class="stripe-land"></span></div>
+  </header>
+
+  <div id="portal-banner" class="portal-banner-region" aria-live="polite"></div>
+  <main id="turinys" class="page-shell">
+    <section class="hero" aria-labelledby="pagrindinis-pavadinimas">
+      <div class="hero-copy">
+        <p class="section-kicker">Aplinkos būklė vienoje vietoje</p>
+        <h1 id="pagrindinis-pavadinimas">Klaipėdos aplinka, matoma aiškiai.</h1>
+        <p class="lede">KMS AMIS kaupia aplinkos monitoringo ir meteorologinius duomenis, kad miesto gyventojai, specialistai ir sprendimų priėmėjai galėtų greitai suprasti, kas vyksta mieste.</p>
+        <a class="button button--primary" href="pages/zemelapis.html">Atverti interaktyvų žemėlapį <span aria-hidden="true">→</span></a>
+      </div>
+      <aside class="hero-aside" id="bendra-informacija">
+        <strong>Viešas, duomenimis grįstas miesto vaizdas</strong>
+        <p>Rodomi demonstraciniai duomenys atnaujinami vienodu, atkuriamu laiko modeliu. Vėlesniuose etapuose čia atsiras analizė, ataskaitos ir specialistų darbo aplinka.</p>
+      </aside>
+    </section>
+
+    <div class="grid-home">
+      <section class="panel card-pad" aria-labelledby="orai-title">
+        <div class="card-heading">
+          <div><span class="eyebrow">Meteorologinė informacija</span><h2 id="orai-title">Miesto oro sąlygų vidurkis</h2><p>Automatinių stotelių matavimų suvestinė.</p></div>
+        </div>
+        <div class="weather-strip" id="weather-strip" aria-live="polite"></div>
+        <p class="update-note" id="weather-updated">Duomenys skaičiuojami…</p>
+        <div class="brand-stripe brand-stripe--compact" aria-hidden="true"><span class="stripe-sea"></span><span class="stripe-shore"></span><span class="stripe-land"></span></div>
+      </section>
+
+      <section class="panel card-pad" aria-labelledby="aqi-title">
+        <div class="card-heading"><div><span class="eyebrow">Europos oro kokybės indeksas</span><h2 id="aqi-title">Šiandien mieste</h2></div><span class="status-chip" id="aqi-chip">Skaičiuojama</span></div>
+        <div class="aqi-layout">
+          <div class="aqi-score" id="aqi-score"><div><strong>–</strong><span>indeksas</span></div></div>
+          <div class="aqi-copy"><h3 id="aqi-label">Vertinama</h3><p id="aqi-description">Indeksas apskaičiuojamas iš pagrindinių oro kokybės parametrų.</p></div>
+        </div>
+        <div class="aqi-scale" aria-label="Oro kokybės skalė"><span class="good"></span><span class="fair"></span><span class="moderate"></span><span class="poor"></span><span class="very-poor"></span><span class="extremely-poor"></span></div>
+        <div class="legend-labels"><span>Gera</span><span>Ypač prasta</span></div>
+        <p class="update-note"><a href="pages/zemelapis.html">Peržiūrėti pagal taškus žemėlapyje →</a></p>
+      </section>
+
+      <section class="panel map-preview" aria-labelledby="preview-title">
+        <div class="map-preview-content">
+          <div class="map-preview-label"><span aria-hidden="true"></span><span id="preview-title">Interaktyvus žemėlapis</span></div>
+          <p class="lede">Stotelės, IoT taškai ir mikrorajonų spalvinė suvestinė.</p>
+          <a class="button button--secondary button--small map-preview-link" href="pages/zemelapis.html">Atverti žemėlapį</a>
+        </div>
+      </section>
+    </div>
+
+    <section class="section-intro" id="monitoringas" aria-labelledby="monitoringas-title">
+      <div><p class="section-kicker">Monitoringo dalys</p><h2 id="monitoringas-title">Duomenų sritys, kurias galėsite tyrinėti</h2></div>
+      <p>Pasirinkite sritį ir pereikite į jos žemėlapį. Analizės bei ataskaitų funkcijos bus papildytos antrajame etape.</p>
+    </section>
+    <div class="monitoring-grid">
+      <a class="monitoring-link" href="pages/oro.html"><strong>Aplinkos oro monitoringas</strong><span>Automatinės stotelės · laboratoriniai duomenys</span></a>
+      <a class="monitoring-link" href="pages/truksmas.html"><strong>Aplinkos triukšmas</strong><span>Septyni rodikliai · logaritminis vidurkis</span></a>
+      <a class="monitoring-link" href="pages/dirvezemis.html"><strong>Dirvožemis</strong><span>Metalai · naftos produktai · periodiniai mėginiai</span></a>
+      <a class="monitoring-link" href="pages/vanduo.html"><strong>Paviršinis vanduo</strong><span>Maistinės medžiagos · biologija</span></a>
+      <a class="monitoring-link" href="pages/gyvoji_gamta.html"><strong>Gyvoji gamta</strong><span>Septynios potemės · rūšių skaičius ir gausumas</span></a>
+      <a class="monitoring-link" href="pages/zeldynai.html"><strong>Želdynai ir želdiniai</strong><span>Būklės balai · mechaniniai pažeidimai</span></a>
+      <a class="monitoring-link" id="ataskaitos" href="pages/ataskaitos.html"><strong>Metinės ataskaitos</strong><span>2022–2025 · spausdinama suvestinė</span></a>
+      <a class="monitoring-link" id="prenumerata" href="pages/prenumerata.html"><strong>Automatinių pranešimų prenumerata</strong><span>Pasirinkite rajoną ir parametrus</span></a>
+    </div>
+
+    <section class="section-intro" id="naudotojo-vadovas" aria-labelledby="vadovas-title">
+      <div><p class="section-kicker">Pagalba</p><h2 id="vadovas-title">Naudotojo vadovas</h2></div>
+      <p>Žingsnis po žingsnio paaiškinta, kaip naudotis žemėlapiu, filtrais, analize ir pranešimų prenumerata. <a href="pages/vadovas.html">Atverti vadovą →</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div><strong>Klaipėdos miesto savivaldybė · KMS AMIS</strong><p>Demonstracinė fazės 1 versija. Normų reikšmės, ribos ir mikrorajonų geometrija yra parinktos demonstracijai ir turi būti patvirtintos prieš diegimą.</p></div>
+      <nav class="footer-links" aria-label="Poraštės nuorodos"><a href="pages/admin/index.html">Valdymo pultas (demonstracija)</a><a href="pages/privatumo-politika.html">Privatumo politika</a><a href="pages/slapuku-politika.html">Slapukų politika</a><a href="pages/vadovas.html">Naudotojo vadovas</a><a href="pages/zemelapis.html">Žemėlapis</a></nav>
+    </div>
+  </footer>
+  <script type="module" src="js/pages/home.js"></script>
+<script type="module" src="js/main.js"></script></body>
+</html>
